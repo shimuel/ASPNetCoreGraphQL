@@ -28,7 +28,7 @@ namespace NHLStats.Api
         {
             services.AddMvc();
 
-            services.AddDbContext<NHLStatsContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:NHLStatsDb"]));
+            services.AddDbContext<NHLStatsContext>(options => options.UseSqlite(Configuration["ConnectionStrings:NHLStatsDb"]));
             services.AddTransient<IPlayerRepository, PlayerRepository>();
             services.AddTransient<ISkaterStatisticRepository, SkaterStatisticRepository>();
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
@@ -51,7 +51,7 @@ namespace NHLStats.Api
 
             app.UseGraphiQl();
             app.UseMvc();
-            db.EnsureSeedData();
+            //db.EnsureSeedData();
         }
     }
 }
